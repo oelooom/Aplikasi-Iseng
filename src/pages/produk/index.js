@@ -24,19 +24,19 @@ const Produk = () => {
                     </tr>
                     <tr className="table-body">
                         <td>20200827-001</td>
-                        <td>Minyal</td>
+                        <td>Minyak</td>
                         <td>40</td>
                         <td>38.000</td>
                     </tr>
                     <tr className="table-body">
                         <td>20200827-001</td>
-                        <td>Minyal</td>
+                        <td>Minyak</td>
                         <td>40</td>
                         <td>38.000</td>
                     </tr>
                     <tr className="table-body">
                         <td>20200827-001</td>
-                        <td>Minyal</td>
+                        <td>Minyak</td>
                         <td>40</td>
                         <td>38.000</td>
                     </tr>
