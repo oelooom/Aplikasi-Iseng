@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './styles.css';
 import SideMenu from '../../component/sidemenu';
 import Header from '../../component/header/header';
-import Modal from '../../component/modal';
 
 const Transaksi = () => {
 
