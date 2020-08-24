@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './styles.css';
 import SideMenu from '../../component/sidemenu';
 import Header from '../../component/header/header';
-import Modal from '../../component/modal';
+import MarketingMenu from '../../component/marketingmenu';
 
-const Transaksi = () => {
+const TransaksiAktifSales = () => {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const handleMenu = () => {
@@ -13,9 +13,9 @@ const Transaksi = () => {
 
     return (
         <div id="wrapper-produk">
-            <Header handleClick={handleMenu} title='Data Transaksi' />
+            <Header handleClick={handleMenu} title='Data Transaksi Aktif' />
             <main className="main">
-                <h3 className="main-title">List Transaksi</h3>
+                <h3 className="main-title">List Transaksi Aktif</h3>
                 <table className="table-data">
                     <tr className="table-head">
                         <th>ID Transaksi</th>
@@ -39,22 +39,41 @@ const Transaksi = () => {
                         <td>20200827-001</td>
                         <td>PDKI3-01</td>
                         <td>K3-01</td>
-                        <td>Pakcing</td>
+                        <td>Packing</td>
                     </tr>
                     <tr className="table-body">
                         <td>20200827-001</td>
                         <td>PDKI3-01</td>
                         <td>K3-01</td>
-                        <td>Completed</td>
+                        <td>Packing</td>
                     </tr>
                     <tr className="table-body">
                         <td>20200827-001</td>
                         <td>PDKI3-01</td>
                         <td>K3-01</td>
-                        <td>Completed</td>
+                        <td>Delivery</td>
                     </tr>
                 </table>
                 <button className="btn" id='tambah'>Tambah <i className="fas fa-plus"></i></button>
+            </main>
+
+            <main className="edit">
+                <h3 className="edit-title">Edit Produk</h3>
+                <table className="table-data">
+                    <tr className="table-body">
+                        <td>20200827-001</td>
+                        <td>PDKI3-01</td>
+                        <td>K3-01</td>
+                        <td>
+                            <select name="status" id="status">
+                                <option value="test">Packing</option>
+                                <option value="test">Delivery</option>
+                                <option value="test">Completed</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <button className="btn" id='tambah'>Update</button>
             </main>
 
             <main className="action">
@@ -62,10 +81,9 @@ const Transaksi = () => {
                 <button className="btn" id='tambah'>Cetak <i className="fas fa-print"></i></button>
             </main>
 
-            <SideMenu menuOpen={menuOpen} handleClick={handleMenu} />
-
+            <MarketingMenu menuOpen={menuOpen} handleClick={handleMenu} />
         </div>
     )
 }
 
-export default Transaksi;
+export default TransaksiAktifSales;

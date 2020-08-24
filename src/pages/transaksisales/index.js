@@ -3,8 +3,9 @@ import './styles.css';
 import SideMenu from '../../component/sidemenu';
 import Header from '../../component/header/header';
 import Modal from '../../component/modal';
+import MarketingMenu from '../../component/marketingmenu';
 
-const Transaksi = () => {
+const TransaksiSales = () => {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const handleMenu = () => {
@@ -62,10 +63,11 @@ const Transaksi = () => {
                 <button className="btn" id='tambah'>Cetak <i className="fas fa-print"></i></button>
             </main>
 
-            <SideMenu menuOpen={menuOpen} handleClick={handleMenu} />
+            <MarketingMenu menuOpen={menuOpen} handleClick={handleMenu} />
+
 
         </div>
     )
 }
 
-export default Transaksi;
+export default TransaksiSales;

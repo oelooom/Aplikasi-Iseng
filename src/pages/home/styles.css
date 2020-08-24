@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn {
+    display: inline;
+    border: none;
+    cursor: pointer;
+}
+
+#wrapper-home {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ED1C24;
+}
+
+#wrapper-home .header {
+    height: 20%;
+    width: 100%;
+}
+
+#wrapper-home .header .navbar {
+    height: 50%;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+#wrapper-home .header .navbar img {
+    cursor: pointer;
+}
+
+#wrapper-home .header .welcome {
+    color: #fff;
+    height: 50%;
+    font-size: 1.3rem;
+    padding: 2rem 2rem;
+    text-align: center;
+}
+
+#wrapper-home .showcase {
+    width: 100%;
+    height: 30%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 1.5rem;
+}
+
+#wrapper-home .edit {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+}
+
+#wrapper-home .edit .edit-title {
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+#wrapper-home .edit .table-data {
+    width: 100%;
+    justify-self: center;
+    align-self: center;
+    border-spacing: 0;
+    margin-bottom: 4px;
+}
+
+#wrapper-home .edit .table-data .table-body td {
+    padding: 2px;
+    text-align: center;
+    border: 1px solid #aca8a8;
+
+}
+
+#wrapper-home .edit .table-data .table-body td:nth-child(odd) {
+    margin: 0;
+    width: 40%;
+    background-color: #FFFFFF;
+}
+
+#wrapper-home .edit .table-data .table-body td:nth-child(even) {
+    background-color: #e6e6e6;
+    
+}
+
+#wrapper-home .edit .btn {
+    width: 55%;
+    padding: 0.2rem;
+    margin: 0.5rem;
+    font-size: 10px;
+    margin-left: 45%;
+}
+
+.left-menu {
+    width: 80%;
+    background-color: #FFE76F;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    transition: all ease-in-out 800ms;
+}
+
+.left-menu .list-menu {
+    width: 100%;
+}
+
+.left-menu .list-menu .list-item {
+    color: #fff;
+    background-color: #FFDD30;
+    padding: 10px;
+    margin-bottom: 3px;
+    font-size: 1.2rem;
+}
+
+.left-menu .list-menu .list-item:hover {
+    background-color: #d1b217;
+}
+
+
+.left-menu .list-menu .list-item:first-child {
+    height: 80px;
+    font-size: 2rem;
+    padding-left: 2rem;
+}
+
+.left-menu.hide {
+    left: -500px;
+    transition: all ease-in-out 400ms;
+}

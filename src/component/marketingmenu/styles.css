@@ -1,0 +1,36 @@
+.left-menu {
+    width: 80%;
+    background-color: #FFE76F;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    transition: all ease-in-out 800ms;
+}
+
+.left-menu .list-menu {
+    width: 100%;
+}
+
+.left-menu .list-menu .list-item {
+    color: #fff;
+    background-color: #FFDD30;
+    padding: 10px;
+    margin-bottom: 3px;
+    font-size: 1.2rem;
+}
+
+.left-menu .list-menu .list-item:hover {
+    background-color: #d1b217;
+}
+
+
+.left-menu .list-menu .list-item:first-child {
+    height: 80px;
+    font-size: 2rem;
+    padding-left: 2rem;
+}
+
+.left-menu.hide {
+    left: -500px;
+    transition: all ease-in-out 400ms;
+}
