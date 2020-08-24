@@ -206,3 +206,7 @@
     left: -500px;
     transition: all ease-in-out 400ms;
 }
+
+.input-edit {
+    width: 100%;
+}

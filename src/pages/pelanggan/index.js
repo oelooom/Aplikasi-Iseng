@@ -3,22 +3,38 @@ import './styles.css';
 import Header from '../../component/header/header';
 import Modal from '../../component/modal';
 import MarketingMenu from '../../component/marketingmenu';
+import { tambahPelanggan, hapusPelanggan } from '../../redux/pelanggan/pelanggan.action';
+import { connect } from 'react-redux';
+import { firestore } from '../../firebase/firebase';
 
-const Pelanggan = () => {
+const Pelanggan = ({ tambahPelanggan, hapusPelanggan, pelanggan }) => {
 
-    const [pelanggan, setPelanggan] = useState([]);
 
     useEffect(() => {
-        let pelanggan;
-        if (localStorage.getItem('pelanggan') === null) {
-            pelanggan = [];
-        } else {
-            pelanggan = JSON.parse(localStorage.getItem('pelanggan'));
+        async function getData() {
+            const userRef = firestore.collection('pelanggan');
+
+            userRef.onSnapshot(async snap => {
+                const changes = snap.docChanges();
+                console.log(changes);
+                changes.forEach(change => {
+                    console.log(change.doc.id)
+                    if (change.type === 'added') {
+                        tambahPelanggan({ id: change.doc.id, ...change.doc.data() })
+                    }
+                    else if (change.type === 'modified') {
+                        tambahPelanggan({ id: change.doc.id, ...change.doc.data() })
+                    }
+                    else if (change.type === 'removed') {
+                        hapusPelanggan({ id: change.doc.id, ...change.doc.data() });
+
+                    }
+                })
+            })
         }
 
-        setPelanggan(pelanggan);
-
-    }, [])
+        getData();
+    }, [tambahPelanggan, hapusPelanggan])
 
     const [menuOpen, setMenuOpen] = useState(false);
     const handleMenu = () => {
@@ -37,6 +53,13 @@ const Pelanggan = () => {
         alamat: ''
     })
 
+    const [terpilih, setTerpilih] = useState({
+        id: '',
+        nama: '',
+        noHp: '',
+        alamat: ''
+    })
+
     const handleChange = (e) => {
         setForm({
             ...form,
@@ -44,34 +67,80 @@ const Pelanggan = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const items = [...pelanggan];
-        setPelanggan([...items, form])
-        setForm({
-            nama: '',
-            noHp: '',
-            alamat: ''
-        });
+        try {
+            const pelangganRef = firestore.collection('pelanggan');
+            await pelangganRef.add({
+                nama: form.nama,
+                noHp: form.noHp,
+                alamat: form.alamat
+            })
 
-        let pelangganData;
-        if (localStorage.getItem('pelanggan') === null) {
-            pelangganData = [];
-        } else {
-            pelangganData = JSON.parse(localStorage.getItem('pelanggan'));
+            setModal(false);
+
+            setForm({
+                nama: '',
+                noHp: '',
+                alamat: ''
+            })
+        } catch (e) {
+            alert(e.message)
         }
+    }
 
-        pelangganData.push(form);
-        localStorage.setItem('pelanggan', JSON.stringify(pelangganData));
+    const handleEdit = (data) => {
+        setTerpilih(data)
+    }
 
-        setModal(false);
+    const handleChangeEdit = (e) => {
+        setTerpilih({
+            ...terpilih,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        try {
+            const pelangganRef = firestore.collection('pelanggan').doc(terpilih.id);
+            await pelangganRef.update({
+                nama: terpilih.nama,
+                noHp: terpilih.noHp,
+                alamat: terpilih.alamat
+            })
+
+            setTerpilih({
+                nama: '',
+                noHp: '',
+                alamat: ''
+            })
+        } catch (e) {
+            alert(e.message)
+        }
+    }
+
+    const handleHapus = async (e) => {
+        e.preventDefault();
+        try {
+            const pelangganRef = firestore.collection('pelanggan').doc(terpilih.id);
+            await pelangganRef.delete();
+
+            setTerpilih({
+                nama: '',
+                noHp: '',
+                alamat: ''
+            })
+        } catch (e) {
+            alert(e.message)
+        }
     }
 
     return (
         <div id="wrapper-sales">
             <Header handleClick={handleMenu} title='Data Pelanggan' />
             <main className="main">
-                <h3 className="main-title">List Sales</h3>
+                <h3 className="main-title">List Pelanggan</h3>
                 <table className="table-data">
                     <tr className="table-head">
                         <th>ID Pelangan</th>
@@ -80,7 +149,7 @@ const Pelanggan = () => {
                         <th>Alamat</th>
                     </tr>
                     {pelanggan.map((data, index) =>
-                        <tr className="table-body">
+                        <tr className="table-body" onClick={() => handleEdit(data)} key={index}>
                             <td>CUS-0{index + 1}</td>
                             <td>{data.nama}</td>
                             <td>{data.noHp}</td>
@@ -93,16 +162,16 @@ const Pelanggan = () => {
             </main>
 
             <main className="edit">
-                <h3 className="edit-title">Edit Data Sales</h3>
+                <h3 className="edit-title">Edit Data Pelanggan</h3>
                 <table className="table-data">
                     <tr className="table-body">
-                        <td>DK2-01</td>
-                        <td>Latifah</td>
-                        <td>Latifkun</td>
-                        <td>Matraman</td>
+                        <td><input type='text' className='input-edit' name='nama' value={terpilih.nama} onChange={handleChangeEdit} /></td>
+                        <td><input type='text' className='input-edit' name='noHp' value={terpilih.noHp} onChange={handleChangeEdit} /></td>
+                        <td><input type='text' className='input-edit' name='alamat' value={terpilih.alamat} onChange={handleChangeEdit} /></td>
                     </tr>
                 </table>
-                <button className="btn" id='tambah'>Update</button>
+                <button className="btn" id='tambah' onClick={handleUpdate}>Update</button>
+                <button className="btn" id='tambah' onClick={handleHapus}>Hapus</button>
             </main>
 
             <main className="action">
@@ -150,4 +219,13 @@ const Pelanggan = () => {
     )
 }
 
-export default Pelanggan;
+const mapStateToProps = state => ({
+    pelanggan: state.pelanggan.pelanggan,
+})
+
+const mapDispatchToProps = dispatch => ({
+    tambahPelanggan: pelanggan => dispatch(tambahPelanggan(pelanggan)),
+    hapusPelanggan: pelanggan => dispatch(hapusPelanggan(pelanggan))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pelanggan);
