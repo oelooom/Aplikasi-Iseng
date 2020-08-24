@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import Login from './pages/login';
+import Admin from './pages/admin';
+import Produk from './pages/produk';
+import Transaksi from './pages/transaksi';
+import TransaksiAktif from './pages/transaksiaktif';
+import Sales from './pages/sales';
+import Kurir from './pages/kurir';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path='/kurir' component={Kurir} />
+      <Route exact path='/sales' component={Sales} />
+      <Route exact path='/transaksiaktif' component={TransaksiAktif} />
+      <Route exact path='/transaksi' component={Transaksi} />
+      <Route exact path='/produk' component={Produk} />
+      <Route exact path='/admin' component={Admin} />
+      <Route exact path='/' component={Login} />
+    </Switch>
   );
 }
 

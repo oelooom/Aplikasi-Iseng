@@ -1,0 +1,28 @@
+.header {
+    height: 20%;
+    width: 100%;
+}
+
+.header .navbar {
+    height: 50%;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.header .navbar img {
+    cursor: pointer;
+}
+
+.header .welcome {
+    background-color: #FFD500;
+    color: #fff;
+    height: 50%;
+    font-size: 1.3rem;
+    padding: 2rem 2rem;
+    text-align: center;
+}

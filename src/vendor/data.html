@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Utama</title>
+    <link rel="stylesheet" href="styles/data.css">
+    <script src="https://kit.fontawesome.com/f2104cec7b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header class="header">
+            <nav class="navbar">
+                <img src="image/Menu.png" alt="Menu" class="menu">
+                <img src="image/Icon.png" alt="Icon" class="icon">
+            </nav>
+            <section class="welcome">
+                <h1>Data Transaksi</h1>
+            </section>
+        </header>
+        <main class="main">
+            <h3 class="main-title">List Transaksi</h3>
+            <table class="table-data">
+                <tr class="table-head">
+                    <th>No Transaksi</th>
+                    <th>ID Pelanggan</th>
+                    <th>ID Kurir</th>
+                    <th>Status</th>
+                </tr>
+                <tr class="table-body">
+                    <td>20200827-001</td>
+                    <td>PDKI3-01</td>
+                    <td>K3-01</td>
+                    <td>Packing</td>
+                </tr>
+                <tr class="table-body">
+                    <td>20200827-001</td>
+                    <td>PDKI3-01</td>
+                    <td>K3-01</td>
+                    <td>Packing</td>
+                </tr>
+                <tr class="table-body">
+                    <td>20200827-001</td>
+                    <td>PDKI3-01</td>
+                    <td>K3-01</td>
+                    <td>Packing</td>
+                </tr>
+            </table>
+            <button class="btn" id='tambah'>Tambah <i class="fas fa-plus"></i></button>
+        </main>
+
+        <main class="edit">
+            <h3 class="edit-title">Edit Transaksi</h3>
+            <table class="table-data">
+                <tr class="table-body">
+                    <td>20200827-001</td>
+                    <td>PDKI3-01</td>
+                    <td>K3-01</td>
+                    <td>
+                        <select name="status" id="status">
+                            <option value="test">Packing</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <button class="btn" id='tambah'>Update</button>
+        </main>
+
+        <main class="action">
+            <button class="btn" id='tambah'>Kembali <i class="fas fa-arrow-left"></i></button>
+            <button class="btn" id='tambah'>Cetak <i class="fas fa-print"></i></button>
+        </main>
+
+        <section class="left-menu hide">
+            <ul class="list-menu">
+                <li class="list-item" id='close'>X</li>
+                <li class="list-item">Data Produk</li>
+                <li class="list-item">Data Sales</li>
+                <li class="list-item">Data Kurir</li>
+                <li class="list-item">Transaksi Aktif</li>
+                <li class="list-item">Daftar Transaksi</li>
+                <li class="list-item">Logout</li>
+            </ul>
+        </section>
+    </div>
+</body>
+
+
+<script>
+    const leftMenu = document.querySelector('.left-menu');
+    const close = document.getElementById('close').addEventListener('click', () => {
+        leftMenu.classList.toggle('hide');
+    })
+    const menu = document.querySelector('.menu').addEventListener('click', () => {
+        leftMenu.classList.toggle('hide');
+    })
+</script>
+
+</html>

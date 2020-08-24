@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Utama</title>
+    <link rel="stylesheet" href="styles/welcome.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <header class="header">
+            <nav class="navbar">
+                <img src="image/Menu.png" alt="Menu" class="menu">
+                <img src="image/Icon.png" alt="Icon" class="icon">
+            </nav>
+            <section class="welcome">
+                <h1>Selamat Datang, Admin!</h1>
+            </section>
+        </header>
+        <section class="showcase"></section>
+        <section class="left-menu hide">
+            <ul class="list-menu">
+                <li class="list-item" id='close'>X</li>
+                <li class="list-item">Data Produk</li>
+                <li class="list-item">Data Sales</li>
+                <li class="list-item">Data Kurir</li>
+                <li class="list-item">Transaksi Aktif</li>
+                <li class="list-item">Daftar Transaksi</li>
+                <li class="list-item">Logout</li>
+            </ul>
+        </section>
+    </div>
+</body>
+
+
+<script>
+    const leftMenu = document.querySelector('.left-menu');
+    const close = document.getElementById('close').addEventListener('click', () => {
+        leftMenu.classList.toggle('hide');
+    })
+    const menu = document.querySelector('.menu').addEventListener('click', () => {
+        leftMenu.classList.toggle('hide');
+    })
+</script>
+
+</html>
