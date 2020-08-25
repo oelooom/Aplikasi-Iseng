@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
-import Header from '../../component/header/header';
+import MarketingHeader from '../../component/marketingheader/header';
 import Modal from '../../component/modal';
 import MarketingMenu from '../../component/marketingmenu';
 import { tambahPelanggan, hapusPelanggan } from '../../redux/pelanggan/pelanggan.action';
@@ -138,12 +138,12 @@ const Pelanggan = ({ tambahPelanggan, hapusPelanggan, pelanggan }) => {
 
     return (
         <div id="wrapper-sales">
-            <Header handleClick={handleMenu} title='Data Pelanggan' />
+            <MarketingHeader handleClick={handleMenu} title='Data Pelanggan' />
             <main className="main">
                 <h3 className="main-title">List Pelanggan</h3>
                 <table className="table-data">
                     <tr className="table-head">
-                        <th>ID Pelangan</th>
+                        <th>ID Pelanggan</th>
                         <th>Nama Pelanggan</th>
                         <th>Handphone</th>
                         <th>Alamat</th>

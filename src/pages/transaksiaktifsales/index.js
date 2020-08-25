@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './styles.css';
-import Header from '../../component/header/header';
+import MarketingHeader from '../../component/marketingheader/header';
 import MarketingMenu from '../../component/marketingmenu';
 
 const TransaksiAktifSales = () => {
@@ -12,7 +12,7 @@ const TransaksiAktifSales = () => {
 
     return (
         <div id="wrapper-produk">
-            <Header handleClick={handleMenu} title='Data Transaksi Aktif' />
+            <MarketingHeader handleClick={handleMenu} title='Data Transaksi Aktif' />
             <main className="main">
                 <h3 className="main-title">List Transaksi Aktif</h3>
                 <table className="table-data">
